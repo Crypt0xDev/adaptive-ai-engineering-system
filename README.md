@@ -33,9 +33,7 @@ Crear un sistema capaz de:
 
 ## 🏗️ Estructura del sistema
 
-```bash
-adaptive-ai-engineering-system/
-│
+```
 ├── core/              # Reglas fundamentales del sistema
 │   ├── principles.md
 │   ├── decision-rules.md
@@ -56,3 +54,32 @@ adaptive-ai-engineering-system/
 │
 ├── CLAUDE.md         # Núcleo de comportamiento de IA
 └── README.md
+```
+
+## 📚 Contenido
+
+- `core/`: Define los principios y reglas que guían el sistema.
+- `engine/`: Contiene los módulos que analizan el contexto y toman decisiones.
+- `skills/`: Describe las habilidades que el sistema puede desarrollar y aplicar.
+- `knowledge/`: Almacena el conocimiento adquirido y los patrones reconocidos.
+- `anti-patterns/`: Lista de prácticas comunes que el sistema debe evitar.
+- `playbooks/`: Guías para aplicar el sistema en diferentes escenarios.
+- `CLAUDE.md`: Define el comportamiento y la personalidad de la IA.
+- `README.md`: Documentación general del proyecto.
+- `CONTRIBUTING.md`: Guía para contribuir al proyecto.
+- `LICENSE`: Información sobre la licencia del proyecto.
+- `.gitignore`: Archivos y carpetas a ignorar por Git.
+
+## 🤝 Contribuciones
+
+¡Las contribuciones son bienvenidas! Si deseas contribuir, por favor sigue las pautas en `CONTRIBUTING.md` y asegúrate de respetar la filosofía del proyecto.
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
+
+## 📞 Contacto
+
+Si tienes preguntas o deseas discutir el proyecto, no dudes en contactarnos a través de [correo electrónico] o unirte a nuestro canal de [Discord/Slack].
+
+¡Gracias por tu interés en el Adaptive AI Engineering System!

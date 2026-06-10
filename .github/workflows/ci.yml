@@ -1,0 +1,18 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate repository
+        run: |
+          echo "Adaptive AI Engineering System"
+          echo "No automated tests configured yet."
+          echo "This workflow is a placeholder for future CI steps."
