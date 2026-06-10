@@ -27,10 +27,28 @@ awk -v b="$begin" -v e="$end" '
 # quita lineas en blanco finales
 awk 'NF{p=NR} {a[NR]=$0} END{for(i=1;i<=p;i++)print a[i]}' "$tmp" > "$global_md"
 
+skills_dst="$claude_dir/skills"
+
 if [ "${1:-}" = "--uninstall" ]; then
-  echo "Desinstalado: bloque removido de $global_md"
+  for d in "$repo"/skills/*/; do
+    name="$(basename "$d")"
+    rm -rf "$skills_dst/$name"
+  done
+  echo "Desinstalado: bloque y skills removidos."
   exit 0
 fi
+
+# Instala las 12 skills en ~/.claude/skills/ para que Claude Code las descubra
+# automaticamente, SIN necesitar el comando /plugin.
+skill_count=0
+mkdir -p "$skills_dst"
+for d in "$repo"/skills/*/; do
+  [ -f "$d/SKILL.md" ] || continue
+  name="$(basename "$d")"
+  rm -rf "$skills_dst/$name"
+  cp -R "$d" "$skills_dst/$name"
+  skill_count=$((skill_count + 1))
+done
 
 # Anade el bloque actualizado
 {
@@ -56,8 +74,9 @@ EOF
 
 echo ""
 echo "OK  Adaptive AI Engineering System integrado en Claude (global)."
-echo "    Archivo: $global_md"
+echo "    Reglas:  $global_md"
+echo "    Skills:  $skills_dst  ($skill_count skills)"
 echo "    Fuente:  $repo"
 echo ""
-echo "Claude ahora aplica estas reglas en TODOS tus proyectos."
-echo "Para desinstalar:  ./install.sh --uninstall"
+echo "Claude aplica las reglas y descubre las skills en TODOS tus proyectos."
+echo "No requiere el comando /plugin. Para desinstalar:  ./install.sh --uninstall"

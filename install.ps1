@@ -52,16 +52,39 @@ if (Test-Path $globalMd) {
 $final = $content + $block + "`n"
 [System.IO.File]::WriteAllText($globalMd, $final, (New-Object System.Text.UTF8Encoding($false)))
 
-Write-Host ""
-Write-Host "OK  Adaptive AI Engineering System integrado en Claude (global)." -ForegroundColor Green
-Write-Host "    Archivo: $globalMd"
-Write-Host "    Fuente:  $repo"
-Write-Host ""
-Write-Host "Claude ahora aplica estas reglas en TODOS tus proyectos." -ForegroundColor Cyan
-Write-Host "Para desinstalar:  .\install.ps1 -Uninstall"
+# Instala las 12 skills en ~/.claude/skills/ para que Claude Code las descubra
+# automaticamente, SIN necesitar el comando /plugin (que no esta en todos los entornos).
+$skillsSrc = Join-Path $PSScriptRoot 'skills'
+$skillsDst = Join-Path $claudeDir 'skills'
+$skillCount = 0
+if (Test-Path $skillsSrc) {
+    if (-not (Test-Path $skillsDst)) { New-Item -ItemType Directory -Force $skillsDst | Out-Null }
+    Get-ChildItem -Path $skillsSrc -Directory | ForEach-Object {
+        if (Test-Path (Join-Path $_.FullName 'SKILL.md')) {
+            $dest = Join-Path $skillsDst $_.Name
+            if (Test-Path $dest) { Remove-Item -Recurse -Force $dest }
+            Copy-Item -Recurse -Force $_.FullName $dest
+            $skillCount++
+        }
+    }
+}
 
-# Soporte de desinstalacion: si se pasa -Uninstall, deja el archivo sin el bloque
+# Soporte de desinstalacion: si se pasa -Uninstall, revierte reglas y skills
 if ($args -contains '-Uninstall') {
     [System.IO.File]::WriteAllText($globalMd, ($content.TrimEnd() + "`n"), (New-Object System.Text.UTF8Encoding($false)))
-    Write-Host "Desinstalado: bloque removido de $globalMd" -ForegroundColor Yellow
+    Get-ChildItem -Path $skillsSrc -Directory | ForEach-Object {
+        $dest = Join-Path $skillsDst $_.Name
+        if (Test-Path $dest) { Remove-Item -Recurse -Force $dest }
+    }
+    Write-Host "Desinstalado: bloque y skills removidos." -ForegroundColor Yellow
+    return
 }
+
+Write-Host ""
+Write-Host "OK  Adaptive AI Engineering System integrado en Claude (global)." -ForegroundColor Green
+Write-Host "    Reglas:  $globalMd"
+Write-Host "    Skills:  $skillsDst  ($skillCount skills)"
+Write-Host "    Fuente:  $repo"
+Write-Host ""
+Write-Host "Claude aplica las reglas y descubre las skills en TODOS tus proyectos." -ForegroundColor Cyan
+Write-Host "No requiere el comando /plugin. Para desinstalar:  .\install.ps1 -Uninstall"
