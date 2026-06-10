@@ -1,3 +1,8 @@
+---
+name: code-reviewer
+description: Revisa codigo con criterio senior: simplicidad, calidad y seguridad. Usar antes de integrar cualquier cambio de codigo.
+---
+
 # 🔎 Code Reviewer
 
 ## Propósito

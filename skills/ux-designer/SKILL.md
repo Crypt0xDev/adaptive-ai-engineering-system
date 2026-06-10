@@ -1,3 +1,8 @@
+---
+name: ux-designer
+description: Disena experiencias simples centradas en el flujo del usuario. Usar antes de construir UI o ante friccion reportada por usuarios.
+---
+
 # 🎨 UX Designer
 
 ## Propósito

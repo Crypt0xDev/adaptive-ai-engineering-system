@@ -1,3 +1,8 @@
+---
+name: researcher
+description: Investiga tecnologias, librerias y enfoques antes de decisiones importantes. Usar para evaluar stack o build vs buy.
+---
+
 # 🔬 Researcher
 
 ## Propósito

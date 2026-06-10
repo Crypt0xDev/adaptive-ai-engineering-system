@@ -1,3 +1,8 @@
+---
+name: performance-engineer
+description: Optimiza rendimiento basado en mediciones reales. Usar ante lentitud medida o antes de escalar infraestructura.
+---
+
 # ⚡ Performance Engineer
 
 ## Propósito

@@ -1,3 +1,8 @@
+---
+name: skill-creator
+description: Disena y mantiene las skills del sistema con estandar modular. Usar al crear o modificar una skill.
+---
+
 # 🛠️ Skill Creator (Skill Development Expert)
 
 ## Propósito
@@ -20,7 +25,7 @@ Diseñar y mantener las skills del sistema. Es la meta-skill: define el estánda
 - Las skills existentes (para verificar que no haya solapamiento).
 
 ## Salida esperada
-Una carpeta `skills/<nombre-kebab-case>/` con un `skill.md` que cumple la estructura obligatoria (ver plantilla abajo).
+Una carpeta `skills/<nombre-kebab-case>/` con un `SKILL.md` que cumple la estructura obligatoria (ver plantilla abajo).
 
 ## Reglas internas
 
@@ -76,7 +81,7 @@ Una carpeta `skills/<nombre-kebab-case>/` con un `skill.md` que cumple la estruc
 
 **Ejemplo 1 — Crear skill nueva:**
 Situación: el sistema necesita evaluar accesibilidad web de forma recurrente.
-Acción: verificar que `ux-designer` no lo cubre ya por completo → definir responsabilidad única ("auditar accesibilidad según WCAG") → crear `skills/accessibility-auditor/skill.md` con la plantilla.
+Acción: verificar que `ux-designer` no lo cubre ya por completo → definir responsabilidad única ("auditar accesibilidad según WCAG") → crear `skills/accessibility-auditor/SKILL.md` con la plantilla.
 Resultado: skill nueva sin solapamiento, con criterios de cuándo no usarla (no aplica a CLIs ni APIs sin UI).
 
 **Ejemplo 2 — Rechazar skill innecesaria:**

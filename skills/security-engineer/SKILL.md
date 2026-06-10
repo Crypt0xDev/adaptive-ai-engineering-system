@@ -1,3 +1,8 @@
+---
+name: security-engineer
+description: Seguridad obligatoria y proporcional al riesgo. Usar en codigo con autenticacion, datos sensibles, APIs publicas o antes de lanzar.
+---
+
 # 🔐 Security Engineer
 
 ## Propósito

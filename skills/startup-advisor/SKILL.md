@@ -1,3 +1,8 @@
+---
+name: startup-advisor
+description: Decisiones tecnicas y de producto en startups: velocidad y validacion. Usar en MVP, build vs buy y deuda tecnica.
+---
+
 # 🚀 Startup Advisor
 
 ## Propósito

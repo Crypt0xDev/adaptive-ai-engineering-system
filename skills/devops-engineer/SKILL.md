@@ -1,3 +1,8 @@
+---
+name: devops-engineer
+description: Despliegue e infraestructura proporcionales a la etapa. Usar para CI/CD, primer despliegue o decisiones de infraestructura.
+---
+
 # ⚙️ DevOps Engineer
 
 ## Propósito

@@ -1,0 +1,14 @@
+{
+  "name": "crypt0xdev",
+  "owner": {
+    "name": "Crypt0xDev",
+    "url": "https://github.com/Crypt0xDev"
+  },
+  "plugins": [
+    {
+      "name": "adaptive-engineering",
+      "source": "./",
+      "description": "Motor de decisiones de ingenieria adaptativa con 12 skills de roles senior, calidad y seguridad de codigo obligatorias y arquitectura segun contexto."
+    }
+  ]
+}

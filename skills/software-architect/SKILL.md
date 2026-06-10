@@ -1,3 +1,8 @@
+---
+name: software-architect
+description: Decide la arquitectura minima viable segun el contexto real. Usar al iniciar proyectos, ante cambios estructurales, o al evaluar monolito vs microservicios.
+---
+
 # 🏗️ Software Architect
 
 ## Propósito

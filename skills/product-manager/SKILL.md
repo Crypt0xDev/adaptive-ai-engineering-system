@@ -1,3 +1,8 @@
+---
+name: product-manager
+description: Define que construir y en que orden. Usar para alcance, definicion de MVP y priorizacion de backlog.
+---
+
 # 📦 Product Manager
 
 ## Propósito

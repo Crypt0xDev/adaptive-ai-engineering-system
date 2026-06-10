@@ -1,3 +1,8 @@
+---
+name: database-architect
+description: Disena el modelo de datos y elige el motor adecuado. Usar para esquemas, normalizacion, relaciones entre entidades y decisiones de base de datos.
+---
+
 # 🗄️ Database Architect
 
 ## Propósito

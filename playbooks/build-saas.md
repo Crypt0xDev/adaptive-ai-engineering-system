@@ -21,7 +21,7 @@
 
 ### 4. Seguridad (security-engineer)
 - Aislamiento por tenant en cada query.
-- Mínimos no negociables de `skills/security-engineer/skill.md`.
+- Mínimos no negociables de `skills/security-engineer/SKILL.md`.
 
 ### 5. Lanzamiento (devops-engineer)
 - PaaS, CI/CD, backups, monitoreo de errores.

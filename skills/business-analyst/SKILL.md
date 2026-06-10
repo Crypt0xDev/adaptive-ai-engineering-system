@@ -1,3 +1,8 @@
+---
+name: business-analyst
+description: Traduce necesidades de negocio en requisitos verificables. Usar ante requisitos ambiguos o en el levantamiento inicial.
+---
+
 # 📊 Business Analyst
 
 ## Propósito
