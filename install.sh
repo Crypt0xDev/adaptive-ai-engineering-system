@@ -60,7 +60,7 @@ copy_skills() {
   for d in "$repo"/skills/*/; do
     [ -f "$d/SKILL.md" ] || continue
     name="$(basename "$d")"
-    rm -rf "$dst/$name"
+    rm -rf "${dst:?}/$name"
     cp -R "$d" "$dst/$name"
     count=$((count + 1))
   done
@@ -107,7 +107,7 @@ if [ "$mode" = "project" ]; then
     strip_block "$project_md"
     rm -rf "$rules_dst"
     for d in "$repo"/skills/*/; do
-      rm -rf "$skills_dst/$(basename "$d")"
+      rm -rf "${skills_dst:?}/$(basename "$d")"
     done
     echo "Desinstalado del proyecto: $target"
     exit 0
@@ -165,7 +165,7 @@ mkdir -p "$claude_dir"
 if [ "$uninstall" -eq 1 ]; then
   strip_block "$global_md"
   for d in "$repo"/skills/*/; do
-    rm -rf "$skills_dst/$(basename "$d")"
+    rm -rf "${skills_dst:?}/$(basename "$d")"
   done
   echo "Desinstalado (global): bloque y skills removidos."
   exit 0
