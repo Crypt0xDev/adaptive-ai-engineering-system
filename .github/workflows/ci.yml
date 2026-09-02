@@ -8,11 +8,49 @@ on:
 
 jobs:
   validate:
+    name: Validar estructura y skills
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Validate repository
+
+      - name: shellcheck (scripts bash)
         run: |
-          echo "Adaptive AI Engineering System"
-          echo "No automated tests configured yet."
-          echo "This workflow is a placeholder for future CI steps."
+          if ! command -v shellcheck >/dev/null 2>&1; then
+            sudo apt-get update -qq && sudo apt-get install -y shellcheck
+          fi
+          shellcheck -S warning install.sh scripts/validate.sh
+
+      - name: Validar manifiestos, skills, imports y smoke test (Linux)
+        run: bash scripts/validate.sh
+
+  powershell:
+    name: Validar install.ps1 (PowerShell)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: PSScriptAnalyzer (solo errores fallan el build)
+        shell: pwsh
+        run: |
+          Set-PSRepository PSGallery -InstallationPolicy Trusted
+          Install-Module PSScriptAnalyzer -Force -Scope CurrentUser
+          $issues = Invoke-ScriptAnalyzer -Path ./install.ps1 -Severity Error,Warning
+          if ($issues) { $issues | Format-Table -AutoSize }
+          if ($issues | Where-Object { $_.Severity -eq 'Error' }) {
+            throw "PSScriptAnalyzer encontro errores en install.ps1"
+          }
+
+      - name: Smoke test install.ps1 (modo proyecto)
+        shell: pwsh
+        run: |
+          $t = Join-Path $env:RUNNER_TEMP 'proj'
+          New-Item -ItemType Directory -Force $t | Out-Null
+          ./install.ps1 -Project -Path $t
+          if (-not (Test-Path (Join-Path $t 'CLAUDE.md'))) { throw 'No se creo CLAUDE.md' }
+          $n = (Get-ChildItem (Join-Path $t '.claude/skills') -Directory).Count
+          if ($n -ne 12) { throw "Esperaba 12 skills, se instalaron $n" }
+          ./install.ps1 -Project -Path $t -Uninstall
+          if (Test-Path (Join-Path $t '.claude/adaptive-engineering')) {
+            throw 'La desinstalacion no limpio .claude/adaptive-engineering'
+          }
+          Write-Host 'install.ps1: smoke test OK'

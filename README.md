@@ -42,9 +42,26 @@ Aplica las reglas de ingeniería en **todos** tus proyectos locales con un solo 
 ./install.sh         # Linux / macOS
 ```
 
-Integra las reglas en `~/.claude/CLAUDE.md` vía imports (fuente única en este repo). Desinstala con `.\install.ps1 -Uninstall` o `./install.sh --uninstall`.
+Integra las reglas en `~/.claude/CLAUDE.md` vía imports (fuente única en este repo) y copia las skills a `~/.claude/skills/`. Desinstala con `.\install.ps1 -Uninstall` o `./install.sh --uninstall`.
 
-### 3. Claude web / Desktop
+### 3. Por proyecto (autocontenido y portable)
+
+Instala el sistema **dentro de un proyecto concreto**, sin depender de la máquina ni de rutas absolutas. Copia las reglas a `<proyecto>/.claude/adaptive-engineering/`, las skills a `<proyecto>/.claude/skills/` y escribe un `<proyecto>/CLAUDE.md` con imports **relativos**, para que puedas commitearlo y compartirlo con tu equipo.
+
+```powershell
+.\install.ps1 -Project                 # proyecto actual (Windows)
+.\install.ps1 -Project -Path C:\repo   # proyecto concreto
+```
+```bash
+./install.sh --project                 # proyecto actual (Linux / macOS)
+./install.sh --project /ruta/al/repo   # proyecto concreto
+```
+
+Desinstala con `--uninstall` (bash) o `-Uninstall` (PowerShell) añadiendo el mismo `--project`/`-Project`.
+
+> **Global vs. por proyecto:** el modo global usa *imports* a este repo (una sola fuente en tu máquina); el modo por proyecto **copia** las reglas y skills dentro del repo para que sea portable y versionable con el proyecto.
+
+### 4. Claude web / Desktop
 
 Claude web y Desktop no leen archivos locales: copia el contenido de
 [`integrations/claude-web-desktop.md`](integrations/claude-web-desktop.md) en tus
@@ -85,9 +102,13 @@ Claude web y Desktop no leen archivos locales: copia el contenido de
 │
 ├── anti-patterns/     # Errores a evitar
 ├── integrations/      # Versión para Claude web / Desktop
-├── install.ps1 / install.sh   # Instalador global para Claude Code
-└── CLAUDE.md          # Constitución del comportamiento de la IA
+├── scripts/           # Utilidades (validate.sh: valida estructura y skills)
+└── install.ps1 / install.sh   # Instalador (global y por proyecto)
 ```
+
+> Las reglas "constitución" viven en `core/` y `anti-patterns/`; los instaladores las
+> inyectan en el `CLAUDE.md` de destino (`~/.claude/CLAUDE.md` global, o `<proyecto>/CLAUDE.md`
+> por proyecto). Por eso este repo no versiona un `CLAUDE.md` propio (está en `.gitignore`).
 
 ---
 
