@@ -8,7 +8,7 @@
     {
       "name": "adaptive-engineering",
       "source": "./",
-      "description": "Motor de decisiones de ingenieria adaptativa con 12 skills de roles senior, calidad y seguridad de codigo obligatorias y arquitectura segun contexto."
+      "description": "Motor de decisiones de ingenieria adaptativa con 17 skills (12 roles senior + 5 de proceso: decisiones tecnicas, buenas practicas, GraphQL, ahorro de tokens, redaccion academica), calidad y seguridad de codigo obligatorias y arquitectura segun contexto."
     }
   ]
 }

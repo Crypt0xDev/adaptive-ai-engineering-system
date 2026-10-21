@@ -29,7 +29,7 @@ Instálalo en cualquier máquina con dos comandos dentro de Claude Code:
 /plugin install adaptive-engineering@crypt0xdev
 ```
 
-Esto habilita las 12 skills de roles senior, que Claude invoca automáticamente según el contexto.
+Esto habilita las 17 skills (12 roles senior + 5 de proceso), que Claude invoca automáticamente según el contexto.
 
 ### 2. Reglas globales en Claude Code (esta máquina)
 
@@ -69,11 +69,15 @@ Claude web y Desktop no leen archivos locales: copia el contenido de
 │   ├── context-analyzer.md
 │   └── architecture-decider.md
 │
-├── skills/            # 12 roles senior (formato SKILL.md invocable)
+├── skills/            # 17 skills (formato SKILL.md invocable)
 │   ├── software-architect/    database-architect/   security-engineer/
 │   ├── ux-designer/           product-manager/       business-analyst/
 │   ├── startup-advisor/       devops-engineer/       performance-engineer/
 │   ├── code-reviewer/         researcher/            skill-creator/
+│   │   # 5 de proceso:
+│   ├── decisiones-tecnicas-fundamentadas/   buenas-practicas-ingenieria/
+│   ├── graphql-evaluacion-implementacion/   ahorro-tokens-archivos/
+│   ├── redaccion-academica/
 │
 ├── playbooks/         # Guías por tipo de proyecto + checklists
 │   ├── build-saas.md, build-api.md, build-mobile-app.md, ...

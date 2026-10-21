@@ -1,7 +1,7 @@
 {
   "name": "adaptive-engineering",
-  "description": "Adaptive AI Engineering System: motor de decisiones de ingenieria asistido por IA. Arquitectura segun contexto (no por dogma), calidad y seguridad de codigo obligatorias, anti-sobreingenieria. Incluye 12 skills de roles senior (arquitecto, seguridad, base de datos, DevOps, performance, code review y mas).",
-  "version": "1.0.0",
+  "description": "Adaptive AI Engineering System: motor de decisiones de ingenieria asistido por IA. Arquitectura segun contexto (no por dogma), calidad y seguridad de codigo obligatorias, anti-sobreingenieria. Incluye 17 skills: 12 roles senior (arquitecto, seguridad, base de datos, DevOps, performance, code review y mas) y 5 de proceso (decisiones tecnicas fundamentadas, buenas practicas de ingenieria, evaluacion de GraphQL, ahorro de tokens en archivos, redaccion academica).",
+  "version": "1.1.0",
   "author": {
     "name": "Crypt0xDev",
     "url": "https://github.com/Crypt0xDev"
